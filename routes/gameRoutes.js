@@ -9,6 +9,37 @@ router.get('/', (req, res) => {
   res.render('games/index', {games})
 })
 
+// GET: read 
+router.get('/2024-*-*', (req, res) => {
+  // console.log(req);
+  // const date = console.log(req.path.slice(1));
+  const date = req.path.slice(1);
+  // res.send(`Get games by date ${req.body}`)
+  const gamesOnDate = games.filter((g) => g.date == date)
+  console.log(gamesOnDate);
+  // if(gamesOnDate) {
+  //   // res.json(game)
+  //   // res.render('games/', {gamesOnDate});
+  // } else {
+  //   res.render('index', `No games played on ${date}`)
+  // }
+
+  res.send(`Get games played on date ${date}`)
+})
+// router.get('/abc*def', (req, res) => {
+
+// router.get('/:id', (req, res) => {
+//   // res.send(`GET: read game by id ${req.params.id}`)
+//   const game = games.find((g) => g.id == req.params.id)
+//   if(game) {
+//     // res.json(game)
+//     res.render('games/game', {game});
+//   }
+//   else next();
+// })
+
+
+
 // POST: create new game
 router.post('/', (req, res, next) => {
   // res.send('POST: create new game')
